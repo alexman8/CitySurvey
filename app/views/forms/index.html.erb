@@ -1,0 +1,34 @@
+<% if @forms.any? %>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th><%= Form.human_attribute_name(:title) %></th>
+        <th><%= Form.human_attribute_name(:description) %></th>
+        <th><%= Form.human_attribute_name(:status) %></th>
+        <th><%= Form.human_attribute_name(:submissions) %></th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @forms.each do |form| %>
+        <tr>
+          <td><%= form.title %></td>
+          <td><%= form.description %></td>
+          <td><%= form.status.humanize %></td>
+          <td><%= form.form_submissions_count %></td>
+          <td><%= link_to 'Show', form %></td>
+          <td><%= edit_form_link(form) %></td>
+          <td><%= link_to 'Delete',
+                          form_path(form),
+                          method: :delete,
+                          data:   { confirm: t('activerecord.confirmation.form.destroy') } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>You have not created any form yet</p>
+<% end %>
+<%= link_to 'New form', new_form_path %>

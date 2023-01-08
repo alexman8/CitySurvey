@@ -1,0 +1,150 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+    padding: 1em;
+}
+
+.app_name {
+    margin-bottom: 1em;
+}
+
+.app_name__link {
+    font-size: 225%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #444444;
+}
+
+.flash_message {
+    margin-bottom: 1em;
+}
+
+.flash_message--alert {
+    color: red;
+}
+
+.flash_message--notice {
+    color: green;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+div.table-container {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+tr:hover {
+    background-color: #EFEFEF;
+}
+
+th, td {
+    text-align: left;
+    padding: 1em;
+}
+
+th {
+    background-color: #444444;
+    color: white;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+.form__status {
+    background-color: yellow;
+    font-size: small;
+}
+
+fieldset {
+    margin-bottom: 1em;
+}
+
+div.form-inputs {
+    margin-bottom: 1em;
+}
+
+div.input {
+    margin-bottom: 1em;
+}
+
+.form_field__description {
+    margin-top: 0;
+    font-size: small;
+}
+
+.form_field_option__container {
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: aliceblue;
+}
+
+.form_field_option__input {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+label.string {
+    display: block;
+}
+
+.form__share_link__container {
+    background-color: lightgreen;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+.form__share_link__instruction {
+    margin: 0 0 0.5em;
+}
+
+.form__delete_link {
+    float: right;
+}
+
+.form_entry__value {
+    background-color: lightblue;
+}
+
+div.error_notification {
+    color: red;
+    margin-bottom: 1em;
+}
+
+span.error {
+    color: red;
+    margin-left: 0.5em;
+}
+
+@media (min-width: 992px) {
+    body {
+        max-width: 75%;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        max-width: 60%;
+    }
+}

@@ -1,0 +1,36 @@
+<%= simple_form_for(@form) do |f| %>
+  <%= f.error_notification %>
+  <% if f.object.errors[:base].present? %>
+    <% f.object.errors[:base].each do |error_msg| %>
+      <%= f.error_notification message: error_msg %>
+    <% end %>
+  <% end %>
+
+  <div id="form-inputs-container" class="form-inputs">
+    <%= field_set_tag do %>
+      <%= f.input :title, autofocus: true, input_html: { size: 50, maxlength: 50 } %>
+      <%= f.input :description, input_html: { size: 100, maxlength: 100 } %>
+    <% end %>
+    <% if @form_fields&.any? %>
+      <%= content_tag :div, id: 'form-fields-container' do %>
+        <% @form_fields.each do |form_field| %>
+          <%= f.simple_fields_for :form_fields, form_field do |form_field_fields| %>
+            <%= render 'form_field_fields', f: form_field_fields %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add field', f, :form_fields %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>&nbsp;&nbsp;
+    <% if @form.persisted? %>
+      <%= link_to 'Cancel', @form %>
+    <% else %>
+      <%= link_to 'Cancel', forms_path %>
+    <% end %>
+  </div>
+<% end %>

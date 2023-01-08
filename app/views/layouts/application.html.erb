@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CitySurvey</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="app_name"><%= link_to 'CitySurvey', root_path, class: 'app_name__link' %></div>
+    <% flash.each do |type, msg| %>
+      <div class="flash_message flash_message--<%= type %>"><%= msg %></div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

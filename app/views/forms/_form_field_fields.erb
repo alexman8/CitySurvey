@@ -1,0 +1,17 @@
+<fieldset class="nested-fields">
+  <%= f.input :name, input_html: { size: 50, maxlength: 50 } %>
+  <%= f.input :description, input_html: { size: 100, maxlength: 100 } %>
+  <%= f.input :type, collection: FormFieldDecorator.type_collection, include_blank: false %>
+  <%= content_tag :div, id: 'form-field-options-container', class: 'form_field_option__container' do %>
+    <%= content_tag :div, class: 'form-field-options-list' do %>
+      <%= f.simple_fields_for :form_field_options do |form_field_option_fields| %>
+        <%= render 'form_field_option_fields', f: form_field_option_fields %>
+      <% end %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add option', f, :form_field_options %>
+    </div>
+  <% end %>
+  <%= f.input :required %>
+  <%= link_to_remove_association 'Remove field', f %>
+</fieldset>

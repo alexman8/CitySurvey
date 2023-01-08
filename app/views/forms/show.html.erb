@@ -1,0 +1,28 @@
+<%= field_set_tag do %>
+  <h1><%= @form.title %> <small class="form__status"><%= @form.status.humanize %></small></h1>
+  <p><%= @form.description %></p>
+  <p><small>* Required</small></p>
+<% end %>
+<%= field_set_tag do %>
+  <% @form_fields.each do |form_field| %>
+    <%= form_field.name_required %>
+    <%= form_field.description_decorated %>
+    <%= form_field.input_mockup %>
+  <% end %>
+<% end %>
+<% if @form.published? %>
+  <div class="form__share_link__container">
+    <p class="form__share_link__instruction">Copy and send link to surveyees</p>
+    <input type="text" value="<%= view_form_url(@form, token: @form.token) %>" size='80' onclick='this.select()' />
+  </div>
+<% end %>
+<div>
+  <%= join_elements_by_pipe edit_form_link(@form),
+                            publish_form_link(@form),
+                            view_form_submissions_link(@form),
+                            link_to('Back to forms', forms_path) %>
+  <%= link_to 'Delete', form_path(@form),
+              method: :delete,
+              data:   { confirm: t('activerecord.confirmation.form.destroy') },
+              class:  'form__delete_link' %>
+</div>

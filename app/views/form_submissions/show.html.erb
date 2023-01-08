@@ -1,0 +1,7 @@
+<p>Below is a summary of your submission:</p>
+<%= field_set_tag do %>
+  <% @form_submission.form_entries.each do |form_entry| %>
+    <%= form_entry.form_field.decorate.name_required %>
+    <span class="form_entry__value"><%= form_entry.value %></span>
+  <% end %>
+<% end %>

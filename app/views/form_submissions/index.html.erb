@@ -1,0 +1,18 @@
+<%= field_set_tag do %>
+  <h1><%= @form.title %> <small class="form__status"><%= @form.status.humanize %></small></h1>
+  <p><%= @form.description %></p>
+  <small>* Required</small>
+<% end %>
+<h2>Submissions</h2>
+<% @form.form_submissions.each.with_index(1) do |form_submission, index| %>
+  <%= field_set_tag "Submission ##{index}" do %>
+    <% form_submission.form_entries.each do |form_entry| %>
+      <%= form_entry.form_field.decorate.name_required %>
+      <span class="form_entry__value"><%= form_entry.value %></span>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= join_elements_by_pipe link_to('Back to form', @form) %>
+</div>
